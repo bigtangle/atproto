@@ -8,6 +8,7 @@
       "envFile": "${workspaceFolder}/packages/pds/.env",
       "program": "${workspaceFolder}/packages/pds/dist/server.js",
       "cwd": "${workspaceFolder}/packages/pds",
+      "runtimeExecutable": "/home/cui/.nvm/versions/node/v22.12.0/bin/node",
       "env": {
         "NODE_ENV": "development"
       },

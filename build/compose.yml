@@ -1,0 +1,139 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: bluesky_postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: bluesky
+      POSTGRES_PASSWORD: blueskypassword
+      POSTGRES_DB: blueskydb
+    volumes:
+      - /opt/bluesky/postgres-data:/var/lib/postgresql/data
+    networks:
+      - bluesky_net
+    cpus: "0.5"
+
+  pds:
+    image: bluesky_pds:latest
+    container_name: bluesky_pds
+    restart: unless-stopped
+    ports:
+      - "2583:2583"
+    depends_on:
+      - postgres
+      - redis
+      - plc
+      - feed
+    environment:
+      PORT: 2583
+      HOSTNAME: pds.local
+      DID_PDS: did:web:pds.local
+      PDS_DATABASE_URL: postgres://bluesky:blueskypassword@postgres:5432/blueskydb
+      ADMIN_PASSWORD: admin1234
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      PDS_BLOBSTORE_DISK_LOCATION: /data/pds/blobs
+      PDS_BLOBSTORE_DISK_TMP_LOCATION: /data/pds/tmp
+      PDS_JWT_SECRET: eff103fdcaa6666c3b1f27dac3196250
+      PDS_ADMIN_PASSWORD: e37efd3aee4ac77a93bfa031c6e5f372
+      PDS_PLC_ROTATION_KEY_K256_PRIVATE_KEY_HEX: 2a2fefb6e17831c71785c120f5bdd051cbcae508d68d040aa063819f03a0d7b9
+      LOG_ENABLED: true
+    networks:
+      - bluesky_net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:2583/xrpc/_health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    cpus: "0.5"
+
+  ozone:
+    image: bluesky_ozone:latest
+    container_name: bluesky_ozone
+    restart: unless-stopped
+    ports:
+      - "2587:2587"
+    depends_on:
+      - pds
+      - redis
+    environment:
+      PORT: 2587
+      HOSTNAME: ozone.local
+      DID_OZONE: did:plc:57armbrc5vp5kcea2y3caldd
+      PDS_HOST: http://pds:2583
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    networks:
+      - bluesky_net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:2587/xrpc/_health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    cpus: "0.5"
+
+  bsky:
+    image: bluesky_appview:latest
+    container_name: bluesky_appview
+    restart: unless-stopped
+    ports:
+      - "2584:2584"
+    depends_on:
+      - pds
+      - ozone
+      - redis
+    environment:
+      PORT: 2584
+      HOSTNAME: bsky.local
+      PDS_HOST: http://pds:2583
+      OZONE_HOST: http://ozone:2587
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    networks:
+      - bluesky_net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:2584/xrpc/_health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    cpus: "0.5"
+
+  redis:
+    image: redis:7
+    container_name: bluesky_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - bluesky_net
+    cpus: "0.5"
+
+  plc:
+    image: bluepages:latest
+    container_name: bluepages
+    restart: unless-stopped
+    ports:
+      - "2586:2586"
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    cpus: "0.5"
+    networks:
+      - bluesky_net
+
+  feed:
+    image: bluesky-feed-generator:latest
+    container_name: bluesky-feed-generator
+    restart: unless-stopped
+    ports:
+      - "2585:2585"
+    networks:
+      - bluesky_net
+    cpus: "0.5"
+
+networks:
+  bluesky_net:
+    driver: bridge
+
