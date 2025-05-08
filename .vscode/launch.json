@@ -13,6 +13,18 @@
         "NODE_ENV": "development"
       },
       "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Dev Env",
+      "cwd": "${workspaceFolder}/packages/dev-env",
+      "runtimeExecutable": "${workspaceFolder}/build/env.sh",
+      "runtimeArgs": ["node", "--enable-source-maps", "dist/bin.js"],
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_ENV": "development"
+      }
     }
   ]
 }
