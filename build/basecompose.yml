@@ -1,8 +1,9 @@
 version: '3.8'
 services:
   # An ephermerally-stored postgres database for single-use test runs
-  db_test:
-    image: postgres:14.4-alpine
+  bluesky-postgres_test:
+    image: postgres:16
+    container_name: bluesky-postgres_test
     environment:
       - POSTGRES_USER=pg
       - POSTGRES_PASSWORD=password
@@ -15,14 +16,14 @@ services:
       timeout: 10s
       retries: 20
     volumes:
-      - /data/vm/atp_db/var/lib/postgresql/data:/var/lib/postgresql/data
+      - /data/vm/bluesky-postgres/var/lib/postgresql/data:/var/lib/postgresql/data
     networks:
       - bluesky_net
+
   # An ephermerally-stored redis cache for single-use test runs
-  redis_test:
+  bluesky-redis:
     image: redis:7.0-alpine
-    ports:
-      - '6380:6379'
+    container_name: bluesky-redis
     # Healthcheck ensures redis is queryable when `docker-compose up --wait` completes
     healthcheck:
       test: ['CMD-SHELL', '[ "$$(redis-cli ping)" = "PONG" ]']
@@ -30,27 +31,38 @@ services:
       timeout: 10s
       retries: 20
     volumes:
-      - /data/vm/atp_redis/data:/data
+      - /data/vm/bluesky-redis/data:/data
     networks:
       - bluesky_net
 
   bluesky:
     image:  bluesky
+    container_name: bluesky
     environment:
-      - DB_POSTGRES_URL=postgresql://pg:password@db_test:5432/postgres
-      - REDIS_HOST=redis_test:6379
+      - DB_POSTGRES_URL=postgresql://pg:password@bluesky-postgres_test:5432/postgres
+      - REDIS_HOST=bluesky-redis:6379
     ports:
       - "2584:2584"  # For Node.js debugger
       - "2583:2583"  # For Node.js debugger
 
     depends_on:
-      db_test:
+      bluesky-postgres_test:
         condition: service_healthy
-      redis_test:
+      bluesky-redis:
         condition: service_healthy
     networks:
       - bluesky_net
 
+  blueskyweb:
+    image:  blueskyweb
+    container_name: blueskyweb
+    environment:
+      - ATP_APPVIEW_HOST=http://bluesky:2584
+      - GOLOG_LOG_LEVEL=info
+    ports:
+      - "19006:19006"  # For Node.js debugger
+    networks:
+      - bluesky_net
 
 networks:
   bluesky_net:
