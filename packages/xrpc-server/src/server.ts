@@ -545,7 +545,7 @@ function createErrorMiddleware({
     const xrpcError = errorParser(err)
     if (xrpcError instanceof InternalServerError) {
       // log trace for unhandled exceptions
-      log.error(err, `unhandled exception in xrpc${methodSuffix}`)
+      log.error({ err }, `unhandled exception in xrpc${methodSuffix}`)
     } else {
       // do not log trace for known xrpc errors
       log.error(
@@ -560,6 +560,6 @@ function createErrorMiddleware({
     if (res.headersSent) {
       return next(err)
     }
-    return res.status(xrpcError.type).json(xrpcError.payload)
+    return res.status(xrpcError.statusCode).json(xrpcError.payload)
   }
 }

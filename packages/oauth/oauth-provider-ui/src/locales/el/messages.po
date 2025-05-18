@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/views/authorize/accept/accept-form.tsx:77
+#: src/views/authorize/accept/accept-form.tsx:76
 msgid "<0/> is asking for permission to access your account (<1/>)."
 msgstr ""
 
@@ -25,11 +25,11 @@ msgstr ""
 msgid "A second authentication factor is required"
 msgstr ""
 
-#: src/views/authorize/accept/accept-form.tsx:149
+#: src/views/authorize/accept/accept-form.tsx:148
 msgid "Access your account data (except chat messages)"
 msgstr ""
 
-#: src/views/authorize/accept/accept-form.tsx:151
+#: src/views/authorize/accept/accept-form.tsx:150
 msgid "Access your chat messages"
 msgstr ""
 
@@ -45,7 +45,7 @@ msgstr ""
 msgid "An unknown error occurred"
 msgstr ""
 
-#: src/views/authorize/sign-in/sign-in-picker.tsx:112
+#: src/views/authorize/sign-in/sign-in-picker.tsx:104
 msgid "Another account"
 msgstr ""
 
@@ -56,6 +56,10 @@ msgstr ""
 #: src/views/authorize/accept/accept-view.tsx:55
 #: src/views/authorize/accept/accept-form.tsx:57
 msgid "Authorize"
+msgstr ""
+
+#: src/views/authorize/sign-in/sign-in-picker.tsx:68
+msgid "Avatar"
 msgstr ""
 
 #: src/views/authorize/sign-in/sign-in-picker.tsx:47
@@ -70,7 +74,7 @@ msgstr ""
 msgid "Between {minLength} and {maxLength} characters"
 msgstr ""
 
-#: src/views/authorize/accept/accept-form.tsx:90
+#: src/views/authorize/accept/accept-form.tsx:89
 msgid "By clicking <0>Authorize</0>, you allow this application to perform the following actions in accordance with their <1>terms of service</1> and <2>privacy policy</2>:"
 msgstr ""
 
@@ -202,7 +206,7 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: src/views/authorize/sign-in/sign-in-picker.tsx:87
+#: src/views/authorize/sign-in/sign-in-picker.tsx:81
 #: src/views/authorize/sign-in/sign-in-form.tsx:138
 msgid "Identifier"
 msgstr ""
@@ -228,7 +232,7 @@ msgstr ""
 msgid "Login complete"
 msgstr ""
 
-#: src/views/authorize/sign-in/sign-in-picker.tsx:105
+#: src/views/authorize/sign-in/sign-in-picker.tsx:97
 msgid "Login to account that is not listed"
 msgstr ""
 
@@ -252,7 +256,7 @@ msgstr ""
 msgid "Moderate"
 msgstr ""
 
-#: src/views/authorize/sign-in/sign-in-picker.tsx:81
+#: src/views/authorize/sign-in/sign-in-picker.tsx:74
 msgid "Name"
 msgstr ""
 
@@ -315,7 +319,7 @@ msgstr ""
 msgid "Remember this account on this device"
 msgstr ""
 
-#: src/views/authorize/accept/accept-form.tsx:124
+#: src/views/authorize/accept/accept-form.tsx:123
 msgid "Requested permissions"
 msgstr ""
 
@@ -346,7 +350,7 @@ msgid "Sign in"
 msgstr ""
 
 #. placeholder {0}: account.name
-#: src/views/authorize/sign-in/sign-in-picker.tsx:75
+#: src/views/authorize/sign-in/sign-in-picker.tsx:67
 msgid "Sign in as {0}"
 msgstr ""
 
@@ -432,7 +436,7 @@ msgstr ""
 msgid "Unexpected server response"
 msgstr ""
 
-#: src/views/authorize/accept/accept-form.tsx:147
+#: src/views/authorize/accept/accept-form.tsx:146
 msgid "Uniquely identify you"
 msgstr ""
 

@@ -54,6 +54,7 @@ export class TeamService {
         (r) =>
           r === 'tools.ozone.team.defs#roleAdmin' ||
           r === 'tools.ozone.team.defs#roleModerator' ||
+          r === 'tools.ozone.team.defs#roleVerifier' ||
           r === 'tools.ozone.team.defs#roleTriage',
       )
 
@@ -197,11 +198,14 @@ export class TeamService {
       isAdmin || member?.role === 'tools.ozone.team.defs#roleModerator'
     const isTriage =
       isModerator || member?.role === 'tools.ozone.team.defs#roleTriage'
+    const isVerifier =
+      isAdmin || member?.role === 'tools.ozone.team.defs#roleVerifier'
 
     return {
       isModerator,
       isAdmin,
       isTriage,
+      isVerifier,
     }
   }
 
@@ -225,11 +229,8 @@ export class TeamService {
           profiles.set(profile.did, profile)
         })
       }
-    } catch (error) {
-      httpLogger.error(
-        { error, dids },
-        'Failed to get profiles for team members',
-      )
+    } catch (err) {
+      httpLogger.error({ err, dids }, 'Failed to get profiles for team members')
     }
 
     return profiles

@@ -109,6 +109,7 @@ import * as AppBskyActorProfile from './types/app/bsky/actor/profile.js'
 import * as AppBskyActorPutPreferences from './types/app/bsky/actor/putPreferences.js'
 import * as AppBskyActorSearchActors from './types/app/bsky/actor/searchActors.js'
 import * as AppBskyActorSearchActorsTypeahead from './types/app/bsky/actor/searchActorsTypeahead.js'
+import * as AppBskyActorStatus from './types/app/bsky/actor/status.js'
 import * as AppBskyEmbedDefs from './types/app/bsky/embed/defs.js'
 import * as AppBskyEmbedExternal from './types/app/bsky/embed/external.js'
 import * as AppBskyEmbedImages from './types/app/bsky/embed/images.js'
@@ -127,8 +128,8 @@ import * as AppBskyFeedGetFeedGenerators from './types/app/bsky/feed/getFeedGene
 import * as AppBskyFeedGetFeedSkeleton from './types/app/bsky/feed/getFeedSkeleton.js'
 import * as AppBskyFeedGetLikes from './types/app/bsky/feed/getLikes.js'
 import * as AppBskyFeedGetListFeed from './types/app/bsky/feed/getListFeed.js'
-import * as AppBskyFeedGetPostThread from './types/app/bsky/feed/getPostThread.js'
 import * as AppBskyFeedGetPosts from './types/app/bsky/feed/getPosts.js'
+import * as AppBskyFeedGetPostThread from './types/app/bsky/feed/getPostThread.js'
 import * as AppBskyFeedGetQuotes from './types/app/bsky/feed/getQuotes.js'
 import * as AppBskyFeedGetRepostedBy from './types/app/bsky/feed/getRepostedBy.js'
 import * as AppBskyFeedGetSuggestedFeeds from './types/app/bsky/feed/getSuggestedFeeds.js'
@@ -230,6 +231,7 @@ import * as ToolsOzoneCommunicationDefs from './types/tools/ozone/communication/
 import * as ToolsOzoneCommunicationDeleteTemplate from './types/tools/ozone/communication/deleteTemplate.js'
 import * as ToolsOzoneCommunicationListTemplates from './types/tools/ozone/communication/listTemplates.js'
 import * as ToolsOzoneCommunicationUpdateTemplate from './types/tools/ozone/communication/updateTemplate.js'
+import * as ToolsOzoneHostingGetAccountHistory from './types/tools/ozone/hosting/getAccountHistory.js'
 import * as ToolsOzoneModerationDefs from './types/tools/ozone/moderation/defs.js'
 import * as ToolsOzoneModerationEmitEvent from './types/tools/ozone/moderation/emitEvent.js'
 import * as ToolsOzoneModerationGetEvent from './types/tools/ozone/moderation/getEvent.js'
@@ -263,6 +265,10 @@ import * as ToolsOzoneTeamDefs from './types/tools/ozone/team/defs.js'
 import * as ToolsOzoneTeamDeleteMember from './types/tools/ozone/team/deleteMember.js'
 import * as ToolsOzoneTeamListMembers from './types/tools/ozone/team/listMembers.js'
 import * as ToolsOzoneTeamUpdateMember from './types/tools/ozone/team/updateMember.js'
+import * as ToolsOzoneVerificationDefs from './types/tools/ozone/verification/defs.js'
+import * as ToolsOzoneVerificationGrantVerifications from './types/tools/ozone/verification/grantVerifications.js'
+import * as ToolsOzoneVerificationListVerifications from './types/tools/ozone/verification/listVerifications.js'
+import * as ToolsOzoneVerificationRevokeVerifications from './types/tools/ozone/verification/revokeVerifications.js'
 
 export * as ComAtprotoAdminDefs from './types/com/atproto/admin/defs.js'
 export * as ComAtprotoAdminDeleteAccount from './types/com/atproto/admin/deleteAccount.js'
@@ -364,6 +370,7 @@ export * as AppBskyActorProfile from './types/app/bsky/actor/profile.js'
 export * as AppBskyActorPutPreferences from './types/app/bsky/actor/putPreferences.js'
 export * as AppBskyActorSearchActors from './types/app/bsky/actor/searchActors.js'
 export * as AppBskyActorSearchActorsTypeahead from './types/app/bsky/actor/searchActorsTypeahead.js'
+export * as AppBskyActorStatus from './types/app/bsky/actor/status.js'
 export * as AppBskyEmbedDefs from './types/app/bsky/embed/defs.js'
 export * as AppBskyEmbedExternal from './types/app/bsky/embed/external.js'
 export * as AppBskyEmbedImages from './types/app/bsky/embed/images.js'
@@ -382,8 +389,8 @@ export * as AppBskyFeedGetFeedGenerators from './types/app/bsky/feed/getFeedGene
 export * as AppBskyFeedGetFeedSkeleton from './types/app/bsky/feed/getFeedSkeleton.js'
 export * as AppBskyFeedGetLikes from './types/app/bsky/feed/getLikes.js'
 export * as AppBskyFeedGetListFeed from './types/app/bsky/feed/getListFeed.js'
-export * as AppBskyFeedGetPostThread from './types/app/bsky/feed/getPostThread.js'
 export * as AppBskyFeedGetPosts from './types/app/bsky/feed/getPosts.js'
+export * as AppBskyFeedGetPostThread from './types/app/bsky/feed/getPostThread.js'
 export * as AppBskyFeedGetQuotes from './types/app/bsky/feed/getQuotes.js'
 export * as AppBskyFeedGetRepostedBy from './types/app/bsky/feed/getRepostedBy.js'
 export * as AppBskyFeedGetSuggestedFeeds from './types/app/bsky/feed/getSuggestedFeeds.js'
@@ -485,6 +492,7 @@ export * as ToolsOzoneCommunicationDefs from './types/tools/ozone/communication/
 export * as ToolsOzoneCommunicationDeleteTemplate from './types/tools/ozone/communication/deleteTemplate.js'
 export * as ToolsOzoneCommunicationListTemplates from './types/tools/ozone/communication/listTemplates.js'
 export * as ToolsOzoneCommunicationUpdateTemplate from './types/tools/ozone/communication/updateTemplate.js'
+export * as ToolsOzoneHostingGetAccountHistory from './types/tools/ozone/hosting/getAccountHistory.js'
 export * as ToolsOzoneModerationDefs from './types/tools/ozone/moderation/defs.js'
 export * as ToolsOzoneModerationEmitEvent from './types/tools/ozone/moderation/emitEvent.js'
 export * as ToolsOzoneModerationGetEvent from './types/tools/ozone/moderation/getEvent.js'
@@ -518,6 +526,10 @@ export * as ToolsOzoneTeamDefs from './types/tools/ozone/team/defs.js'
 export * as ToolsOzoneTeamDeleteMember from './types/tools/ozone/team/deleteMember.js'
 export * as ToolsOzoneTeamListMembers from './types/tools/ozone/team/listMembers.js'
 export * as ToolsOzoneTeamUpdateMember from './types/tools/ozone/team/updateMember.js'
+export * as ToolsOzoneVerificationDefs from './types/tools/ozone/verification/defs.js'
+export * as ToolsOzoneVerificationGrantVerifications from './types/tools/ozone/verification/grantVerifications.js'
+export * as ToolsOzoneVerificationListVerifications from './types/tools/ozone/verification/listVerifications.js'
+export * as ToolsOzoneVerificationRevokeVerifications from './types/tools/ozone/verification/revokeVerifications.js'
 
 export const COM_ATPROTO_MODERATION = {
   DefsReasonSpam: 'com.atproto.moderation.defs#reasonSpam',
@@ -527,6 +539,9 @@ export const COM_ATPROTO_MODERATION = {
   DefsReasonRude: 'com.atproto.moderation.defs#reasonRude',
   DefsReasonOther: 'com.atproto.moderation.defs#reasonOther',
   DefsReasonAppeal: 'com.atproto.moderation.defs#reasonAppeal',
+}
+export const APP_BSKY_ACTOR = {
+  StatusLive: 'app.bsky.actor.status#live',
 }
 export const APP_BSKY_FEED = {
   DefsRequestLess: 'app.bsky.feed.defs#requestLess',
@@ -559,6 +574,7 @@ export const TOOLS_OZONE_TEAM = {
   DefsRoleAdmin: 'tools.ozone.team.defs#roleAdmin',
   DefsRoleModerator: 'tools.ozone.team.defs#roleModerator',
   DefsRoleTriage: 'tools.ozone.team.defs#roleTriage',
+  DefsRoleVerifier: 'tools.ozone.team.defs#roleVerifier',
 }
 
 export class AtpBaseClient extends XrpcClient {
@@ -1725,10 +1741,12 @@ export class AppBskyNS {
 export class AppBskyActorNS {
   _client: XrpcClient
   profile: AppBskyActorProfileRecord
+  status: AppBskyActorStatusRecord
 
   constructor(client: XrpcClient) {
     this._client = client
     this.profile = new AppBskyActorProfileRecord(client)
+    this.status = new AppBskyActorStatusRecord(client)
   }
 
   getPreferences(
@@ -1882,6 +1900,72 @@ export class AppBskyActorProfileRecord {
   }
 }
 
+export class AppBskyActorStatusRecord {
+  _client: XrpcClient
+
+  constructor(client: XrpcClient) {
+    this._client = client
+  }
+
+  async list(
+    params: OmitKey<ComAtprotoRepoListRecords.QueryParams, 'collection'>,
+  ): Promise<{
+    cursor?: string
+    records: { uri: string; value: AppBskyActorStatus.Record }[]
+  }> {
+    const res = await this._client.call('com.atproto.repo.listRecords', {
+      collection: 'app.bsky.actor.status',
+      ...params,
+    })
+    return res.data
+  }
+
+  async get(
+    params: OmitKey<ComAtprotoRepoGetRecord.QueryParams, 'collection'>,
+  ): Promise<{ uri: string; cid: string; value: AppBskyActorStatus.Record }> {
+    const res = await this._client.call('com.atproto.repo.getRecord', {
+      collection: 'app.bsky.actor.status',
+      ...params,
+    })
+    return res.data
+  }
+
+  async create(
+    params: OmitKey<
+      ComAtprotoRepoCreateRecord.InputSchema,
+      'collection' | 'record'
+    >,
+    record: Un$Typed<AppBskyActorStatus.Record>,
+    headers?: Record<string, string>,
+  ): Promise<{ uri: string; cid: string }> {
+    const collection = 'app.bsky.actor.status'
+    const res = await this._client.call(
+      'com.atproto.repo.createRecord',
+      undefined,
+      {
+        collection,
+        rkey: 'self',
+        ...params,
+        record: { ...record, $type: collection },
+      },
+      { encoding: 'application/json', headers },
+    )
+    return res.data
+  }
+
+  async delete(
+    params: OmitKey<ComAtprotoRepoDeleteRecord.InputSchema, 'collection'>,
+    headers?: Record<string, string>,
+  ): Promise<void> {
+    await this._client.call(
+      'com.atproto.repo.deleteRecord',
+      undefined,
+      { collection: 'app.bsky.actor.status', ...params },
+      { headers },
+    )
+  }
+}
+
 export class AppBskyEmbedNS {
   _client: XrpcClient
 
@@ -2019,6 +2103,13 @@ export class AppBskyFeedNS {
       })
   }
 
+  getPosts(
+    params?: AppBskyFeedGetPosts.QueryParams,
+    opts?: AppBskyFeedGetPosts.CallOptions,
+  ): Promise<AppBskyFeedGetPosts.Response> {
+    return this._client.call('app.bsky.feed.getPosts', params, undefined, opts)
+  }
+
   getPostThread(
     params?: AppBskyFeedGetPostThread.QueryParams,
     opts?: AppBskyFeedGetPostThread.CallOptions,
@@ -2028,13 +2119,6 @@ export class AppBskyFeedNS {
       .catch((e) => {
         throw AppBskyFeedGetPostThread.toKnownErr(e)
       })
-  }
-
-  getPosts(
-    params?: AppBskyFeedGetPosts.QueryParams,
-    opts?: AppBskyFeedGetPosts.CallOptions,
-  ): Promise<AppBskyFeedGetPosts.Response> {
-    return this._client.call('app.bsky.feed.getPosts', params, undefined, opts)
   }
 
   getQuotes(
@@ -3940,22 +4024,26 @@ export class ToolsNS {
 export class ToolsOzoneNS {
   _client: XrpcClient
   communication: ToolsOzoneCommunicationNS
+  hosting: ToolsOzoneHostingNS
   moderation: ToolsOzoneModerationNS
   server: ToolsOzoneServerNS
   set: ToolsOzoneSetNS
   setting: ToolsOzoneSettingNS
   signature: ToolsOzoneSignatureNS
   team: ToolsOzoneTeamNS
+  verification: ToolsOzoneVerificationNS
 
   constructor(client: XrpcClient) {
     this._client = client
     this.communication = new ToolsOzoneCommunicationNS(client)
+    this.hosting = new ToolsOzoneHostingNS(client)
     this.moderation = new ToolsOzoneModerationNS(client)
     this.server = new ToolsOzoneServerNS(client)
     this.set = new ToolsOzoneSetNS(client)
     this.setting = new ToolsOzoneSettingNS(client)
     this.signature = new ToolsOzoneSignatureNS(client)
     this.team = new ToolsOzoneTeamNS(client)
+    this.verification = new ToolsOzoneVerificationNS(client)
   }
 }
 
@@ -4010,6 +4098,26 @@ export class ToolsOzoneCommunicationNS {
       .catch((e) => {
         throw ToolsOzoneCommunicationUpdateTemplate.toKnownErr(e)
       })
+  }
+}
+
+export class ToolsOzoneHostingNS {
+  _client: XrpcClient
+
+  constructor(client: XrpcClient) {
+    this._client = client
+  }
+
+  getAccountHistory(
+    params?: ToolsOzoneHostingGetAccountHistory.QueryParams,
+    opts?: ToolsOzoneHostingGetAccountHistory.CallOptions,
+  ): Promise<ToolsOzoneHostingGetAccountHistory.Response> {
+    return this._client.call(
+      'tools.ozone.hosting.getAccountHistory',
+      params,
+      undefined,
+      opts,
+    )
   }
 }
 
@@ -4375,5 +4483,49 @@ export class ToolsOzoneTeamNS {
       .catch((e) => {
         throw ToolsOzoneTeamUpdateMember.toKnownErr(e)
       })
+  }
+}
+
+export class ToolsOzoneVerificationNS {
+  _client: XrpcClient
+
+  constructor(client: XrpcClient) {
+    this._client = client
+  }
+
+  grantVerifications(
+    data?: ToolsOzoneVerificationGrantVerifications.InputSchema,
+    opts?: ToolsOzoneVerificationGrantVerifications.CallOptions,
+  ): Promise<ToolsOzoneVerificationGrantVerifications.Response> {
+    return this._client.call(
+      'tools.ozone.verification.grantVerifications',
+      opts?.qp,
+      data,
+      opts,
+    )
+  }
+
+  listVerifications(
+    params?: ToolsOzoneVerificationListVerifications.QueryParams,
+    opts?: ToolsOzoneVerificationListVerifications.CallOptions,
+  ): Promise<ToolsOzoneVerificationListVerifications.Response> {
+    return this._client.call(
+      'tools.ozone.verification.listVerifications',
+      params,
+      undefined,
+      opts,
+    )
+  }
+
+  revokeVerifications(
+    data?: ToolsOzoneVerificationRevokeVerifications.InputSchema,
+    opts?: ToolsOzoneVerificationRevokeVerifications.CallOptions,
+  ): Promise<ToolsOzoneVerificationRevokeVerifications.Response> {
+    return this._client.call(
+      'tools.ozone.verification.revokeVerifications',
+      opts?.qp,
+      data,
+      opts,
+    )
   }
 }
