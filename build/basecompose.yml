@@ -57,8 +57,9 @@ services:
     image:  blueskyweb
     container_name: blueskyweb
     environment:
-      - ATP_APPVIEW_HOST=http://bluesky:2584
-      - GOLOG_LOG_LEVEL=info
+      PUBLIC_APPVIEW_SERVICE: "https://appview.example.com"
+      PUBLIC_PDS_SERVICE: "https://pds.example.com"
+      PUBLIC_BRANDING_NAME: "decentralized super App based on Blockchain and AI Ag"
     ports:
       - "19006:19006"  # For Node.js debugger
     networks:
