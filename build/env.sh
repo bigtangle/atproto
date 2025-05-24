@@ -1,11 +1,22 @@
-#!/usr/bin/env sh
+# Core service config
+PDS_PORT=2583
+PDS_HOSTNAME=localhost
+PDS_PUBLIC_URL=http://localhost:2583
+PDS_SERVICE_DID=did:example:pds
+PDS_VERSION=0.0.0
+PDS_DEV_MODE=true
+PDS_INVITE_REQUIRED=false
+# Secrets (required)
+PDS_ADMIN_PASSWORD=admin-pass
+PDS_JWT_SECRET=jwt-secret
+PDS_PLC_ROTATION_KEY_K256_PRIVATE_KEY_HEX=0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
 
-# Exit if any command fails
-set -e
+# Identity service
+PDS_DID_PLC_URL=http://localhost:2582
 
-  export DB_POSTGRES_URL="postgresql://pg:password@:5433/postgres"
+# Storage (choose one)
+PDS_BLOBSTORE_DISK_LOCATION=./blobs
 
-  export REDIS_HOST="127.0.0.1:6380"
-
-  "$@"
-
+# Optional for debugging
+NODE_ENV=development
+DEBUG=*
